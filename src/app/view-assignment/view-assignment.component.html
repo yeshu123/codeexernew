@@ -1,0 +1,100 @@
+
+
+<h2>View Assignment</h2>
+<p>Resource Manager - <strong>Vasudha</strong></p>
+
+<div class="mat-elevation-z8" aria-readonly="true">
+    <!-- <div>
+        <a mat-raised-button color="primary" (click)="Openpopup('')" style="margin: 2%">Create New</a>
+    </div> -->
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <mat-label><fa-icon [icon]="faSearch" size="1x" ></fa-icon>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="finaldata" matSort class="mat-elevation-z8"  style="margin: 0% 0% 0% 0%;">
+     
+        <!-- <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;"><strong>ID</strong></th>
+          <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="vamid">
+          <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>VAM ID</strong></th>
+          <td mat-cell *matCellDef="let element">{{element.vamid }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;"><strong> Name</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong> Email</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.email }}</td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="techTrack">
+            <th mat-header-cell *matHeaderCellDef> techTrack</th>
+            <td mat-cell *matCellDef="let element">{{element.techTrack }}</td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="TechTrack">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>Tech Track</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.TechTrack }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>start Date</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>End Date</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.endDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="SMEName">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong></strong> SME Name</th>
+            <td mat-cell *matCellDef="let element">{{element.SMEName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="DelayDays">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>Delay Days</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.DelayDays}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="ProgramStatus">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"><strong> Program Status</strong></th>
+            <td mat-cell *matCellDef="let element">{{element.ProgramStatus}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="comments">
+            <th mat-header-cell *matHeaderCellDef style="color: white;"> <strong>Comments</strong></th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <a mat-raised-button (click)="EditCompany(element.vamid)" color="primary" [disabled]="true">Comment</a> 
+               
+            </div>
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action</th>
+            <td mat-cell *matCellDef="let element">
+                <div>
+                    <a mat-raised-button (click)="EditCompany(element.id)" color="primary">Edit</a> |
+                    <a mat-raised-button (click)="RemoveCompany(element.id)" color="accent">Delete</a>
+                </div>
+            </td>
+          </ng-container> -->
+
+          <tr mat-header-row *matHeaderRowDef="displayColums" style="background-color: dodgerBlue;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColums;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons 
+  aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>

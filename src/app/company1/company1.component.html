@@ -1,0 +1,76 @@
+
+
+<div class="mark">
+  <p> <b>Associate name : &nbsp;</b><label>MITHIN </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VAM ID :&nbsp;</b><label>VAM 8419</label> </p>
+  <p><b>Resourse Manger :&nbsp; </b><label>VASUDHA</label></p>
+</div>
+
+<h4>&nbsp;&nbsp;<b>*please follow the training list and update your program status</b></h4>
+<div class="mat-elevation-z8">
+    
+    <table mat-table [dataSource]="finaldata" matSort class="mat-elevation-z8"  style="margin: 0% 0% 0% 0%;">
+     
+        <ng-container matColumnDef="srno">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 14px;"> SR no</th>
+          <td mat-cell *matCellDef="let element">{{element.srno}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="programName">
+          <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Program Name</th>
+          <td mat-cell *matCellDef="let element">{{element.programName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 14px;"> Start Date</th>
+            <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> End Date</th>
+            <td mat-cell *matCellDef="let element">{{element.endDate }}</td>
+          </ng-container>
+          <ng-container matColumnDef="SMEName">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> SME Name</th>
+            <td mat-cell *matCellDef="let element">{{element.SMEName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="SMEStatus">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> SME Status</th>
+            <td mat-cell *matCellDef="let element">{{element.SMEStatus}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Delaydays">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Delay Days</th>
+            <td mat-cell *matCellDef="let element">{{element.Delaydays}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="TechTrack">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Tech Track</th>
+            <td mat-cell *matCellDef="let element">{{element.TechTrack}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="ProgramStatus">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Program Status</th>
+            <td mat-cell *matCellDef="let element">{{element.ProgramStatus}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="upload">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Upload</th>
+            <td mat-cell *matCellDef="let element">
+                <div>
+                    <a mat-raised-button (click)="EditCompany(element.srno)" color="primary">ADD</a>
+                </div>
+            </td>
+          </ng-container>
+
+         
+
+          <tr mat-header-row *matHeaderRowDef="displayColums" style="background-color: dodgerBlue;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColums;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[1,5, 10, 20]"
+  showFirstLastButtons 
+  aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>

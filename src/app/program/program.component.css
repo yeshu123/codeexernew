@@ -1,0 +1,24 @@
+
+.mat-elevation-z8{
+    width: 1320px;
+    vertical-align: middle;
+    margin-left: 0%;
+    
+   
+}
+/* a{
+    padding: 5px;
+    color: white !important;
+} */
+.mark
+{
+    text-size-adjust: 10px;
+    text-align:left;
+    display: flex;
+    justify-content:space-between; 
+    padding: 10px;
+    margin-left: 0%;
+    background-color: white;
+    font-size: 15px;
+}
+

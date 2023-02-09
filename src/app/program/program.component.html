@@ -1,0 +1,137 @@
+<app-header1 *ngIf="router.url!=='/SME'"></app-header1>
+<div class="mark">
+
+  <p style="font-size: 18px;" ><b>Subject Matter Expert:&nbsp;</b><label>Pallela Yeshwanth</label><p></p>
+  <p style="font-size: 18px;"><b>Resource Manager:&nbsp;</b><label>Masoor Vasudha</label></p>
+
+</div>
+<h4><b>*Please check and update for the list of associate selected for respective training</b></h4>
+<!--<div class="just">
+  <label id="avi"><b>Associate VAM ID &nbsp;</b></label>
+  <input id="avi" type="text"/>
+  <button>Search</button> 
+  <label id="avi"><b>Associate Program Status &nbsp;</b></label>
+  <input id="avi" type="text"/>
+  <button>Search</button>
+</div>-->
+
+
+
+<div class="mat-elevation-z8" >
+  
+  <div class="l" style="margin-left: 1%;">
+    <mat-form-field>
+      <mat-label><fa-icon [icon]="faSearch" size="1x" ></fa-icon>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <b style="font-size: 20px;">
+      Associate Details</b>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <b style="font-size: 20px;"> SME Details</b>
+  </div>
+
+    <table mat-table [dataSource]="finaldata" matSort class="mat-elevation-z8"  style="margin: 0% 0% 0% 0%;">
+     
+        <!-- <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 14px;"> </th>
+          <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="vamid">
+          <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> VAM ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          <td mat-cell *matCellDef="let element">{{element.vamid }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 14px;"> Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="DelayDays">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> DelayDays &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{&nbsp;&nbsp;&nbsp;&nbsp;element.DelayDays}}</td>
+          </ng-container>
+
+    
+
+          <ng-container matColumnDef="programName">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Program Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.programName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="TechTrack">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Tech Track &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.TechTrack}}</td>
+           </ng-container>
+
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Start Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> End Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.endDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="ProgramStatus">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;">Program Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.ProgramStatus}}</td>
+          </ng-container>
+          <ng-container matColumnDef="StartDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Start Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.StartDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="EndDate">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;">End Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.EndDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Delaydays">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Delay Days &nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.Delaydays}}</td>
+          </ng-container>
+          <ng-container matColumnDef="SMEStatus">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> SME Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td mat-cell *matCellDef="let element">{{element.SMEStatus}}</td>
+          </ng-container>
+          <ng-container matColumnDef="SMEAction">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Attach &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;</th>
+            
+            <td mat-cell *matCellDef="let element"> {{element.SMEAction}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="SMEaction">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;">Action</th>
+            <td mat-cell *matCellDef="let element">
+                <div>
+                    <a mat-raised-button (click)="EditCompany(element.id)" color="primary">SME Action&nbsp;&nbsp;</a> 
+                  
+                </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayColums" style="background-color: dodgerBlue;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColums;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons 
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

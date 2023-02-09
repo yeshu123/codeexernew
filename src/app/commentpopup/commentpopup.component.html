@@ -1,0 +1,92 @@
+
+  <form [formGroup]="companyform" (ngSubmit)="SaveCompany()">
+    <div class="form-row">
+      <div class="form-group col-md-6" hidden>
+        <label for="inputEmail4"></label>
+        <input type="id" class="form-control" id="inputEmail4" placeholder="id" >
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">VAM ID</label>
+        <input type="vamid" class="form-control" id="inputPassword4" placeholder="vamid" [readOnly]="true">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Name</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Name" [readOnly]="true">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputAddress2">Email</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="email" [readOnly]="true">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputState">TechTrack</label>
+        <select id="inputState" class="form-control">
+          <option >JAVA</option>
+          <option>.NET</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputAddress">resourceName</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="resourceName">
+    </div>
+
+     <div class="form-group">
+      <label for="inputAddress2">email</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="email">
+    </div> 
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity" >Start Date</label>
+        <input id="date" name="date" class="form-control" type="date" placeholder="MM/DD/YYY">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputState">End Date</label>
+        <input  id="date" name="date"  class="form-control" type="date" placeholder="MM/DD/YYY">
+        
+      </div>
+      
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">SME</label>
+        <select id="inputState" class="form-control">
+          <option selected>Sarojini</option>
+          <option>Vasudha</option>
+          <option>Rupesh</option>
+        </select>
+      </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Program Status</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="status">
+    </div>
+  </div>
+  <div class="example-button-row" style="margin: 2px">
+    <button mat-raised-button color="primary">Save</button> |
+    <a (click)="closepopup()" mat-raised-button color="accent">Close</a>
+  </div>
+
+ 
+  
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
