@@ -9,30 +9,31 @@ import { companymodel } from '../Model/companymodel';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  apiurl = 'http://localhost:3000/company';
+  apiurl = 'https://localhost:7260/api/Assign';
 
   Getallcomapny(): Observable<companymodel[]> {
     return this.http.get<companymodel[]>(this.apiurl);
   }
 
-  GetCompanybycode(vamid: any): Observable<companymodel> {
-    return this.http.get<companymodel>(this.apiurl + '/' + vamid);
+  GetCompanybycode(id: any): Observable<companymodel[]> {
+    return this.http.get<companymodel[]>('https://localhost:7260/api/Assign/GetResourceHistoryById/'+id);
   }
 
-  RemoveCompanybycode(vamid: any) {
-    return this.http.delete(this.apiurl + '/' + vamid);
+  RemoveCompanybycode(id: any) {
+    return this.http.delete(this.apiurl + '/' + id);
   }
 
   CreateComapny(companydata: any) {
     return this.http.post(this.apiurl, companydata);
   }
 
-  UpdateComapny(vamid: any, companydata: any) {
-    return this.http.put(this.apiurl + '/' + vamid, companydata);
+  UpdateComapny(id: any, companydata: any) {
+    return this.http.put(this.apiurl + '/' + id, companydata);
   }
 
   getProgramDropDown():Observable<any>{
     return this.http.get<companymodel[]>("https://localhost:7260/api/ProgramTracker/GetTechTracks"+ 'program');
   }
+
 
 }

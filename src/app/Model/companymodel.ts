@@ -1,7 +1,10 @@
 export interface companymodel{
+    id:number;
     srno:number,
     vamid:number,
-    name:string,Delaydays:number,
+    resourceName:string,
+    manager:string,
+    Delaydays:number,
     email:string,
     programName:string,
     TechTrack:string,category:string,
@@ -9,5 +12,6 @@ export interface companymodel{
     endDate:string,
     SMEName:string,
     ProgramStatus:string,
-    SMEStatus:string
+    SMEStatus:string,
+    programsTrackerId : number
 }

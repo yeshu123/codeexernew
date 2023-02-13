@@ -9,6 +9,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { faHome, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { EditpopupComponent } from '../editpopup/editpopup.component';
+import { EditassignmentComponent } from '../editassignment/editassignment.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company',
@@ -19,7 +22,7 @@ export class CompanyComponent implements OnInit {
   faHome=faHome;
   faSearch=faSearch;
 
-  constructor(private dialog: MatDialog, private api: ApiService) { }
+  constructor(private dialog: MatDialog, private api: ApiService,private router: Router) { }
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
   @ViewChild(MatSort) _sort!:MatSort;
   companydata!: companymodel[];
@@ -30,15 +33,15 @@ export class CompanyComponent implements OnInit {
     this.LoadCompany();
   }
 
-  displayColums: string[] = ["vamid", "name", "email","TechTrack", "startDate", "endDate","SMEName","ProgramStatus", "action"]
+  displayColums: string[] = ["id","vamid", "resourceName", "email","manager","techTrack", "startDate", "endDate","sme","programStatus", "action"]
 
-  Openpopup(vamid: any) {
+  Openpopup(id: any) {
     const _popup = this.dialog.open(PopupComponent, {
-      width: '500px',
+      width: '1500px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {
-        vamid: vamid
+        id: id
       }
     })
     _popup.afterClosed().subscribe(r => {
@@ -55,17 +58,23 @@ export class CompanyComponent implements OnInit {
     });
   }
 
-  EditCompany(vamid: any) {
-    this.Openpopup(vamid);
+  EditCompany(id: any) {
+    this.Openpopup(id);
   }
-  RemoveCompany(vamid: any) {
+  RemoveCompany(id: any) {
     alertify.confirm("Remove Assignment", "do you want delete the assignment?", () => {
-      this.api.RemoveCompanybycode(vamid).subscribe(r => {
+      this.api.RemoveCompanybycode(id).subscribe(r => {
         this.LoadCompany();
       });
     }, function () {
 
     })
+
+
+  }
+  routing(id:any) {
+    this.router.navigate(['/editassignment']);
+    this.api.GetCompanybycode(id);
 
 
   }
@@ -87,3 +96,7 @@ applyFilter(event: Event) {
 
 
 }
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
+

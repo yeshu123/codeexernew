@@ -13,6 +13,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { Popup1Component } from '../popup1/popup1.component';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-program',
@@ -23,6 +24,7 @@ export class ProgramComponent implements OnInit {
   faHome=faHome;
   faSearch=faSearch;
   faArrowDown=faArrowDown;
+  faDownload=faDownload;
 
   constructor(private dialog: MatDialog, private api: ApiService,public router: Router) { }
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
@@ -35,7 +37,7 @@ export class ProgramComponent implements OnInit {
     this.LoadCompany();
   }
 
-  displayColums: string[] = ["vamid", "name", "DelayDays","programName","TechTrack", "startDate", "endDate","ProgramStatus","StartDate", "EndDate","Delaydays","SMEStatus","SMEAction","SMEaction"]
+  displayColums: string[] = ["vamid", "name", "DelayDays","programName","TechTrack", "startDate", "endDate","ProgramStatus","StartDate", "EndDate","Delaydays","SMEStatus","Attach","SMEaction"]
 
   Openpopup(id: any) {
     const _popup = this.dialog.open(Popup1Component, {

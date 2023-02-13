@@ -1,29 +1,38 @@
 
-  <form [formGroup]="companyform" (ngSubmit)="SaveCompany()">
+  <form [formGroup]="companyform">
     <div class="form-row">
       <div class="form-group col-md-6" hidden>
-        <label for="inputEmail4"></label>
-        <input type="id" class="form-control" id="inputEmail4" placeholder="id" >
+        <label for="inputEmail4">ID</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="id"
+        >
       </div>
-
+      
       <div class="form-group col-md-6">
         <label for="inputPassword4">VAM ID</label>
-        <input type="vamid" class="form-control" id="inputPassword4" placeholder="vamid" >
+        <input type="text" class="form-control" id="inputPassword4" placeholder="vamid" 
+        formControlName="vamid" [(ngModel)]="vamid" name="vamid" #ngModel>
       </div>
 
       <div class="form-group col-md-6">
         <label for="inputAddress">Name</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Name" >
+        <input type="text" class="form-control" id="inputAddress" placeholder="Name"
+         formControlName="name" [(ngModel)]="resourceName" name="resourceName" #ngModel>
       </div>
 
       <div class="form-group col-md-6">
         <label for="inputAddress2">Email</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="email" >
+        <input type="text" class="form-control" id="inputAddress2" placeholder="email"
+        formControlName="email" [(ngModel)]="email" name="email" #ngModel>
       </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress2" >Manager</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="manager"
+          formControlName="manager" [(ngModel)]="manager" name="manager" #ngModel >
+        </div>
 
       <div class="form-group col-md-6">
         <label for="inputState">TechTrack</label>
-        <select id="inputState" class="form-control">
+        <select id="inputState" class="form-control" formControlName="TechTrack" [(ngModel)]="TechTrack" name="TechTrack" #ngModel>
           <option >JAVA</option>
           <option>.NET</option>
         </select>
@@ -43,12 +52,14 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputCity" >Start Date</label>
-        <input id="date" name="date" class="form-control" type="date" placeholder="MM/DD/YYY"  >
+        <input id="date" name="date" class="form-control" type="date" placeholder="MM/DD/YYY" 
+        formControlName="startDate" [(ngModel)]="startDate" name="startDate" #ngModel >
       </div>
 
       <div class="form-group col-md-6">
         <label for="inputState">End Date</label>
-        <input  id="date" name="date"  class="form-control" type="date" placeholder="MM/DD/YYY" >
+        <input  id="date" name="date"  class="form-control" type="date" placeholder="MM/DD/YYY" 
+        formControlName="endDate" [(ngModel)]="endDate" name="endDate" #ngModel>
         
       </div>
       
@@ -56,7 +67,8 @@
       <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputState">SME</label>
-        <select id="inputState" class="form-control">
+        <select id="inputState" class="form-control" 
+        formControlName="SME" [(ngModel)]="SME" name="SME" #ngModel>
           <option selected>Sarojini</option>
           <option>Vasudha</option>
           <option>Rupesh</option>
@@ -65,12 +77,13 @@
 
     <div class="form-group col-md-6">
       <label for="inputAddress">Program Status</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="status">
+        <input type="text" class="form-control" id="inputAddress" placeholder="status"
+        formControlName="ProgramStatus" [(ngModel)]="ProgramStatus" name="ProgramStatus" #ngModel>
     </div>
   </div>
   <div class="example-button-row" style="margin: 2px">
-    <button mat-raised-button color="primary">Save</button> |
-    <a (click)="closepopup()" mat-raised-button color="accent">Close</a>
+    <button mat-raised-button color="primary" (click)="submit()">Save</button> 
+    <a (click)="closepopup()" mat-raised-button color="accent" >Close</a>
   </div>
   </form>
 

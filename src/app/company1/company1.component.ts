@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { SubmitService } from '../submit.service';
 
 @Component({
   selector: 'app-company1',
@@ -19,7 +20,7 @@ export class Company1Component implements OnInit {
   isSubmitted: boolean= false;
   companyform: any;
 
-  constructor(private dialog: MatDialog, private api: ApiService) { }
+  constructor(private dialog: MatDialog, private api: ApiService,public submitService: SubmitService) { }
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
   @ViewChild(MatSort) _sort!:MatSort;
   companydata!: companymodel[];

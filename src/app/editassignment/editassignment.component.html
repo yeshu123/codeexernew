@@ -24,9 +24,9 @@
           <td mat-cell *matCellDef="let element">{{element.vamid}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="resourceName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;"><strong> Name</strong></th>
-            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            <td mat-cell *matCellDef="let element">{{element.resourceName}}</td>
           </ng-container>
 
           <ng-container matColumnDef="email">
@@ -34,19 +34,19 @@
             <td mat-cell *matCellDef="let element">{{element.email }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="TechTrack">
+          <ng-container matColumnDef="techTrack">
             <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>Tech Track</strong></th>
-            <td mat-cell *matCellDef="let element">{{element.TechTrack }}</td>
+            <td mat-cell *matCellDef="let element">{{element.programsTracker.techTrack }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="Category">
+          <ng-container matColumnDef="category">
             <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>Category</strong></th>
-            <td mat-cell *matCellDef="let element">{{element.Category }}</td>
+            <td mat-cell *matCellDef="let element">{{element.programsTracker.category}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="ProgramName">
+          <ng-container matColumnDef="program">
             <th mat-header-cell *matHeaderCellDef style="color: white;"><strong>Program Name</strong></th>
-            <td mat-cell *matCellDef="let element">{{element.ProgramName }}</td>
+            <td mat-cell *matCellDef="let element">{{element.programsTracker.program }}</td>
           </ng-container>
 
           <ng-container matColumnDef="startDate">
@@ -59,22 +59,22 @@
             <td mat-cell *matCellDef="let element">{{element.endDate}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="SMEName">
+          <ng-container matColumnDef="sme">
             <th mat-header-cell *matHeaderCellDef style="color: white;"><strong> SME Name</strong></th>
-            <td mat-cell *matCellDef="let element">{{element.SMEName}}</td>
+            <td mat-cell *matCellDef="let element">{{element.sme}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="ProgramStatus">
+          <ng-container matColumnDef="programStatus">
             <th mat-header-cell *matHeaderCellDef style="color: white;"><strong> Program Status</strong></th>
-            <td mat-cell *matCellDef="let element">{{element.ProgramStatus}}</td>
+            <td mat-cell *matCellDef="let element">{{element.programStatus}}</td>
           </ng-container>
 
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef style="color: white;"><strong> Action</strong></th>
             <td mat-cell *matCellDef="let element">
                 <div>
-                    <a mat-raised-button (click)="EditCompany(element.vamid)" color="primary">Edit</a> |
-                    <a mat-raised-button (click)="RemoveCompany(element.vamid)" color="accent">Delete</a>
+                    <a mat-raised-button (click)="EditCompany(element.id)" color="primary">Edit</a> |
+                    <a mat-raised-button (click)="RemoveCompany(element.id)" color="accent">Delete</a>
                 </div>
             </td>
           </ng-container>

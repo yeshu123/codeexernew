@@ -1,10 +1,10 @@
 
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from '../shared/api.service';
 import * as alertify from 'alertifyjs'
+import { SubmitService } from '../submit.service';
 
 @Component({
   selector: 'app-popup2',
@@ -15,7 +15,7 @@ export class Popup2Component implements OnInit {
   editdata: any;
   public listitems : Array<string> =[];
 
-  constructor(private builder: FormBuilder, private dialog: MatDialog, private api: ApiService,
+  constructor(private builder: FormBuilder, private dialog: MatDialog, private api: ApiService, private submitSevice: SubmitService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
@@ -39,9 +39,8 @@ export class Popup2Component implements OnInit {
     statusOfProgram: this.builder.control('', Validators.required),
     filename: this.builder.control('', Validators.required),
   });
-isSubmitted: boolean = false;
+
   SaveCompany() {
-    this.isSubmitted= true;
     if (this.companyform.valid) {
       const Editid = this.companyform.getRawValue().id;
       if (Editid != '' && Editid != null) {
@@ -65,7 +64,7 @@ isSubmitted: boolean = false;
   dropdown(){
     this.api.getProgramDropDown().subscribe((data: any[])=>{
       data.forEach(element => {
-        this.listitems.push(element["TechTrack"]);
+        this.listitems.push(element["techtrack"]);
         
       });
     })
@@ -76,6 +75,12 @@ isSubmitted: boolean = false;
     this.filename = (event.target as HTMLInputElement).value;
     this.filename1 = this.filename.replace(/^.*[\\\/]/, '')
   }
+  submit(){
+    this.submitSevice.isSubmitted=true;
+    //console.log('submitted');
+    this.dialog.closeAll();
+  }
+  
+
 
 }
-

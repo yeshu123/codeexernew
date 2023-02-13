@@ -10,6 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { EditpopupComponent } from "../editpopup/editpopup.component";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { identifierName } from "@angular/compiler";
+import { programstracker } from "../Model/programstracker";
 
 
 @Component({
@@ -19,25 +21,27 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 })
 export class EditassignmentComponent implements OnInit {
   faSearch=faSearch;
+  id ! :number;
 
   constructor(private dialog: MatDialog, private api: ApiService) {}
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
   @ViewChild(MatSort) _sort!:MatSort;
   companydata!: companymodel[];
+
   finaldata:any;
 
   ngOnInit(): void {
     this.LoadCompany();
   }
-  displayColums: string[] = ["vamid", "name", "email", "TechTrack","Category","ProgramName", "startDate", "endDate","SMEName","ProgramStatus", "action"]
+  displayColums: string[] = ["vamid", "resourceName", "email", "techTrack","category","program", "startDate", "endDate","sme","programStatus", "action"]
 
-  Openpopup(vamid: any) {
+  Openpopup(id: any) {
     const _popup = this.dialog.open(EditpopupComponent, {
       width: '500px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {
-        vamid:vamid
+        id:id
       }
     })
     _popup.afterClosed().subscribe(r => {
@@ -46,7 +50,7 @@ export class EditassignmentComponent implements OnInit {
   }
 
   LoadCompany() {
-    this.api.Getallcomapny().subscribe(response => {
+    this.api.GetCompanybycode(this.id).subscribe(response => {
       this.companydata = response;
       this.finaldata=new MatTableDataSource<companymodel>(this.companydata);
       this.finaldata.paginator=this._paginator;
@@ -54,13 +58,13 @@ export class EditassignmentComponent implements OnInit {
     });
   }
 
-  EditCompany(vamid: any) {
-    this.Openpopup(vamid);
+  EditCompany(id: any) {
+    this.Openpopup(id);
     
   }
-  RemoveCompany(vamid: any) {
+  RemoveCompany(id: any) {
     alertify.confirm("Remove Company", "do you want remove this company?", () => {
-      this.api.RemoveCompanybycode(vamid).subscribe(r => {
+      this.api.RemoveCompanybycode(id).subscribe(r => {
         this.LoadCompany();
       });
     }, function () {
