@@ -1,20 +1,51 @@
 
-<form [formGroup]="companyform" (ngSubmit)="SaveCompany()">
+ <div class="d-flex justify-content-between">
+     
+  <label id="search"><b>UploadFile</b></label>
+  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+  <mat-form-field>
+    <mat-select placeholder="Select the file type">
+      <mat-option value="Pdf">
+        Pdf
+      </mat-option>
+      <mat-option value="Docx">
+        Docx
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    <!-- <button mat-raised-button color="primary">
+      browse
+    </button> -->
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary"(click)="fileInput.click()">
+<span>upload</span>
+<input #fileInput type="file" (change)="handleInput($event)" formControlName="file"
+style="display:none;" /> 
+
+</button> &nbsp;&nbsp;&nbsp; </div>
+<div class="example-button-row" style="margin: 2px">
+  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  
+  <button mat-raised-button color="primary" (click)="submit()">Submit</button> | 
+  <button (click)="closepopup()" type="button" class="btn btn-secondary">Cancel</button>
+ 
+</div>
+
+<!-- <form [formGroup]="companyform" (ngSubmit)="SaveCompany()" style="width:100%;">
   <div class="form-row">
     <div class="form-group col-md-6" hidden>
       <label for="inputEmail4"></label>
       <input type="id" class="form-control" id="inputEmail4" placeholder="id" >
     </div>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between" style="width:100%">
      
-        <label id="search"><b>UploadFile</b></label>
+        <label id="search"><b>Upload File</b></label>
         &nbsp;&nbsp; &nbsp;&nbsp; 
           <input type="search" #search > 
-          <!-- <button mat-raised-button color="primary">
-            browse
-          </button> -->
+          
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button mat-raised-button color="primary"(click)="fileInput.click()">
-<span>browse</span>
+<span>Upload</span>
 <input #fileInput type="file" (change)="handleInput($event)" style="display:none;" /> 
 
 </button> &nbsp;&nbsp;&nbsp;
@@ -35,18 +66,12 @@
     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  <!-- <div class="form-group">
-    <label for="inputAddress">resourceName</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="resourceName">
-  </div> -->
 
-  <!-- <div class="form-group">
-    <label for="inputAddress2">email</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="email">
-  </div> -->
 <div class="example-button-row" style="margin: 2px">
   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <button (click)="closepopup()" type="button" (click)="submit()"class="btn btn-secondary">Cancel</button>
   <button mat-raised-button color="primary" (click)="submit()">Submit</button> | 
-  <a (click)="closepopup()" mat-raised-button color="accent">Cancel</a>
+  <button (click)="closepopup()" type="button" class="btn btn-secondary">Cancel</button>
+ 
 </div>
-</form>
+</form> -->

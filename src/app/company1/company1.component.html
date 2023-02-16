@@ -1,80 +1,83 @@
 
 
 <div class="mark">
-  <p> <b>Associate name : &nbsp;</b><label>MITHIN </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VAM ID :&nbsp;</b><label>VAM 8419</label> </p>
-  <p><b>Resourse Manger :&nbsp; </b><label>VASUDHA</label></p>
+  <p> <b style="font-size: 16px;font-family: gill sans MT-12px;  background-color: white;">VAM ID: &nbsp;</b><label>VAM 8420 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 18px;">Associate name : &nbsp;</b><label>MITHIN</label> </p>
+  <!-- <p><b>Resourse Manger :&nbsp; </b><label>VASUDHA</label></p> -->
 </div>
 
-<h4>&nbsp;&nbsp;<b>*please follow the training list and update your program status</b></h4>
+<!-- <h4>&nbsp;&nbsp;<b>*please follow the training list and update your program status</b></h4> -->
 <div class="mat-elevation-z8">
     
     <table mat-table [dataSource]="finaldata" matSort class="mat-elevation-z8"  style="margin: 0% 0% 0% 0%;">
      
-        <ng-container matColumnDef="srno">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 14px;"> SR no</th>
-          <td mat-cell *matCellDef="let element">{{element.srno}}</td>
+        <!-- <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 15px;"> <b>Id</b></th>
+          <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container> -->
+        <ng-container matColumnDef="techTrack">
+          <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"> <b>Technology Track</b></th>
+          <td mat-cell *matCellDef="let element">{{element.techTrack}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="programName">
-          <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Program Name</th>
-          <td mat-cell *matCellDef="let element">{{element.programName}}</td>
+        <ng-container matColumnDef="program">
+          <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"> <b>Program Name</b></th>
+          <td mat-cell *matCellDef="let element">{{element.programsTracker.program}}</td>
         </ng-container>
 
         <ng-container matColumnDef="startDate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 14px;"> Start Date</th>
-            <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; font-size: 15px;"><b> Start Date</b></th>
+            <td mat-cell *matCellDef="let element">{{element.startDate|date}}</td>
           </ng-container>
 
           <ng-container matColumnDef="endDate">
-            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> End Date</th>
-            <td mat-cell *matCellDef="let element">{{element.endDate }}</td>
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"> <b>End Date</b></th>
+            <td mat-cell *matCellDef="let element">{{element.endDate|date }}</td>
           </ng-container>
-          <ng-container matColumnDef="SMEName">
-            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> SME Name</th>
-            <td mat-cell *matCellDef="let element">{{element.SMEName }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="SMEStatus">
-            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> SME Status</th>
-            <td mat-cell *matCellDef="let element">{{element.SMEStatus}}</td>
-          </ng-container>
-
+          
           <ng-container matColumnDef="Delaydays">
-            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Delay Days</th>
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"><b> Delay Days</b></th>
             <td mat-cell *matCellDef="let element">{{element.Delaydays}}</td>
           </ng-container>
-
-          <ng-container matColumnDef="TechTrack">
-            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 14px;"> Tech Track</th>
-            <td mat-cell *matCellDef="let element">{{element.TechTrack}}</td>
+          <ng-container matColumnDef="sme">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"><b> SME Name</b></th>
+            <td mat-cell *matCellDef="let element">{{element.sme }}</td>
           </ng-container>
+
+          <ng-container matColumnDef="smeStatus">
+            <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"><b> SME Status</b></th>
+            <td mat-cell *matCellDef="let element">{{element.smeStatus}}</td>
+          </ng-container>
+
 
           
 
- <ng-container matColumnDef="ProgramStatus">
-  <th mat-header-cell *matHeaderCellDef> Program Status</th>
+          
+<!-- 
+ <ng-container matColumnDef="ProgramStatus" style="color: white; font-size: 15px;">
+  <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"> <b>Program Status</b></th>
   <td mat-cell *matCellDef="let element">
     <span *ngIf="!submitService.isSubmitted">
-      open
+      Open
     </span>
     <span *ngIf="submitService.isSubmitted">
-      submitted
+      Submitted
     </span>
   </td>
-</ng-container>
+</ng-container> -->
 
-<ng-container matColumnDef="upload">
-  <th mat-header-cell *matHeaderCellDef> Upload</th>
+<ng-container matColumnDef="upload" style="color: white; font-size: 15px;">
+  <th mat-header-cell *matHeaderCellDef style="color: white; font-size: 15px;"> <b>Upload</b></th>
   <td mat-cell *matCellDef="let element">
       <div>
-          <a mat-raised-button (click)="EditCompany(element.id)" color="primary">ADD</a>
+        <a type="button" (click)="EditCompany(element.id)"  class="btn btn-info">ADD</a>
+          <!-- <a mat-raised-button (click)="EditCompany(element.id)" color="primary">ADD</a> -->
       </div>
   </td>
 </ng-container>
 
          
 
-          <tr mat-header-row *matHeaderRowDef="displayColums" style="background-color: dodgerBlue;"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayColums" style="background-color: darkslategray; font-family: gill sans MT-12px;"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColums;"></tr>
 
     </table>

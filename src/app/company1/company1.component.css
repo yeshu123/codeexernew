@@ -7,6 +7,9 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    background-color: white;
+    
+    font-size: 15px;
 }
 .save-button {
     background: green;

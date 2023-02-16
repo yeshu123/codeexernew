@@ -31,7 +31,7 @@ export class Company1Component implements OnInit {
     this.LoadCompany();
   }
 
-  displayColums: string[] = ["srno","programName", "startDate", "endDate","SMEName", "SMEStatus", "Delaydays","TechTrack","ProgramStatus", "upload"]
+  displayColums: string[] = ["techTrack","program", "startDate", "endDate","Delaydays","sme", "smeStatus", "upload"]
   SaveCompany() {
     this.isSubmitted= true;
     if (this.companyform.valid) {

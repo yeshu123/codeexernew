@@ -6,6 +6,7 @@ import * as alertify from 'alertifyjs';
 import { HttpClient } from '@angular/common/http';
 import { companymodel } from '../Model/companymodel';
 import { ModuleTeardownOptions } from '@angular/core/testing';
+import { techtracks } from '../Model/techtracks';
 
 @Component({
   selector: 'app-popup',
@@ -14,17 +15,18 @@ import { ModuleTeardownOptions } from '@angular/core/testing';
 })
 export class PopupComponent implements OnInit {
   editdata: any;
-  public listitems : Array<string> =["Java",".NET"];
-id: number | undefined;
+  public listitems : any;
+  track: techtracks[];
+  id: number;
 vamid: number | undefined;
 resourceName: string='';
 manager: string | null | undefined;
 email: string='';
   ProgramStatus: string='';
-  TechTrack:any;
+  techTrack:any;
   startDate:any;
   endDate:any;
-  SME:any;
+  sme:any;
   constructor(private builder: FormBuilder, private dialog: MatDialog, private api: ApiService,private http:HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -33,26 +35,28 @@ email: string='';
       this.api.GetCompanybycode(this.data.vamid).subscribe(response => {
         this.editdata = response;
         this.companyform.setValue({
-          //id: this.editdata.id,
-          vamid: this.editdata.vamid,name: this.editdata.resourceName, email: this.editdata.email,manager: this.editdata.manager,
-          TechTrack: this.editdata.TechTrack, startDate: this.editdata.startDate, endDate: this.editdata.endDate,
-          SME: this.editdata.SME,ProgramStatus: this.editdata.ProgramStatus
+          id: this.editdata.id,
+          vamid: this.editdata.vamid,resourceName: this.editdata.resourceName, email: this.editdata.email,manager: this.editdata.manager,
+          techTrack: this.editdata.techTrack, startDate: this.editdata.startDate, endDate: this.editdata.endDate,
+          sme: this.editdata.sme
         });
       });
     }
+    this.dropdown();
   }
+  
 
   companyform = this.builder.group({
-    //id: this.builder.control({ value: '', disabled: true }),
+    id: this.builder.control({ value: '', disabled: true }),
     vamid: this.builder.control('', Validators.required),
-    name: this.builder.control('', Validators.required),
+    resourceName: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.required),
     manager:this.builder.control('',Validators.required),
-    TechTrack: this.builder.control('', Validators.required),
+    techTrack: this.builder.control('', Validators.required),
     startDate: this.builder.control('', Validators.required),
     endDate: this.builder.control('', Validators.required),
-    SME: this.builder.control('', Validators.required),
-    ProgramStatus: this.builder.control('', Validators.required),
+    sme: this.builder.control('', Validators.required),
+    //ProgramStatus: this.builder.control('', Validators.required),
   });
 
   SaveCompany() {
@@ -78,19 +82,23 @@ email: string='';
 
   dropdown(){
     this.api.getProgramDropDown().subscribe((data: any[])=>{
-      data.forEach(element => {
-        this.listitems.push(element["techtrack"]);
+      // data.forEach(element => {
+      //   this.listitems.push(element["techtrack"]);
+      //   console.log(listitems);
         
-      });
+      // });
+      this.listitems=data;
+      console.log(this.listitems);
     })
   }
 submit(){
-  const companyform ={vamid:this.vamid, resourceName:this.resourceName,manager:this.manager,email:this.email,TechTrack:this.TechTrack,
-    startDate:this.startDate,endDate:this.endDate,SME:this.SME,status:this.ProgramStatus}
+  const companyform ={vamid:this.vamid, resourceName:this.resourceName,manager:this.manager,email:this.email,techTrack:this.techTrack,
+    startDate:this.startDate,endDate:this.endDate,sme:this.sme }
     this.http.post('https://localhost:7260/api/Assign',companyform).subscribe(res => console.log(res));
     //console.log(companyform);
     this.closepopup();
     alertify.success("saved successfully.")
 }
+
 
 }

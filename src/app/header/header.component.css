@@ -4,6 +4,9 @@
     background-color: #333;
     font-family: Arial;
   }
+  h2{
+    text-align: center;
+  }
   
   /* Links inside the navbar */
   .navbar a {

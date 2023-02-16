@@ -31,7 +31,7 @@ export class ViewAssignmentComponent implements OnInit {
     this.LoadCompany();
   }
 
-  displayColums: string[] = ["vamid", "name", "email","TechTrack", "startDate", "endDate","SMEName","DelayDays","ProgramStatus", "comments"]
+  displayColums: string[] = ["vamid", "resourceName","techTrack", "startDate", "endDate","sme","Delaydays", "comments"]
 
   Openpopup(id: any) {
     const _popup = this.dialog.open(CommentpopupComponent, {

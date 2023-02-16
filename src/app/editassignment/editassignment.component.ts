@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { EditpopupComponent } from "../editpopup/editpopup.component";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Router } from '@angular/router';
 import { identifierName } from "@angular/compiler";
 import { programstracker } from "../Model/programstracker";
 
@@ -23,7 +24,7 @@ export class EditassignmentComponent implements OnInit {
   faSearch=faSearch;
   id ! :number;
 
-  constructor(private dialog: MatDialog, private api: ApiService) {}
+  constructor(private dialog: MatDialog, private api: ApiService,private router: Router) {}
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
   @ViewChild(MatSort) _sort!:MatSort;
   companydata!: companymodel[];
@@ -33,37 +34,42 @@ export class EditassignmentComponent implements OnInit {
   ngOnInit(): void {
     this.LoadCompany();
   }
-  displayColums: string[] = ["vamid", "resourceName", "email", "techTrack","category","program", "startDate", "endDate","sme","programStatus", "action"]
+  displayColums: string[] = ["vamid", "resourceName", "techTrack","category","program", "startDate", "endDate","sme","action"]
 
-  Openpopup(id: any) {
+  Openpopup(data: any) {
     const _popup = this.dialog.open(EditpopupComponent, {
       width: '500px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {
-        id:id
+        // id:id
+        item:data
       }
     })
     _popup.afterClosed().subscribe(r => {
       this.LoadCompany();
     });
   }
-
+value:any;
   LoadCompany() {
-    this.api.GetCompanybycode(this.id).subscribe(response => {
+  this.value=localStorage.getItem('id')
+   //this.id=parseInt(this.value);
+    //this.router.getCurrentNavigation().extras.state.example
+    this.api.GetCompanybycode(this.value).subscribe(response => {
       this.companydata = response;
       this.finaldata=new MatTableDataSource<companymodel>(this.companydata);
       this.finaldata.paginator=this._paginator;
       this.finaldata.sort=this._sort;
     });
   }
+  
 
-  EditCompany(id: any) {
-    this.Openpopup(id);
+  EditCompany(data: any) {
+    this.Openpopup(data);
     
   }
   RemoveCompany(id: any) {
-    alertify.confirm("Remove Company", "do you want remove this company?", () => {
+    alertify.confirm("Delete Assignment", "Do you want delete the assignment?", () => {
       this.api.RemoveCompanybycode(id).subscribe(r => {
         this.LoadCompany();
       });
@@ -79,4 +85,9 @@ export class EditassignmentComponent implements OnInit {
   }
 
 
+
 }
+function h(h: any) {
+  throw new Error("Function not implemented.");
+}
+

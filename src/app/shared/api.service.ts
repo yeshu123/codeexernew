@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { companymodel } from '../Model/companymodel';
+import { techtracks } from '../Model/techtracks';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,13 @@ export class ApiService {
     return this.http.get<companymodel[]>(this.apiurl);
   }
 
-  GetCompanybycode(id: any): Observable<companymodel[]> {
-    return this.http.get<companymodel[]>('https://localhost:7260/api/Assign/GetResourceHistoryById/'+id);
+  GetCompanybycode(id: number): Observable<companymodel[]> {
+
+    return this.http.get<companymodel[]>('https://localhost:7260/api/Assign/GetResourceHistoryById'+'/'+id);
+     //return this.http.get<companymodel[]>(this.apiurl+'/GetResourceHistoryById'+'/'+id);
+     //https://localhost:7260/api/Assign
+    
+    //return this.http.get<companymodel[]>('https://localhost:7260/api/Assign/GetResourceHistoryById/'+id);
   }
 
   RemoveCompanybycode(id: any) {
@@ -32,7 +38,7 @@ export class ApiService {
   }
 
   getProgramDropDown():Observable<any>{
-    return this.http.get<companymodel[]>("https://localhost:7260/api/ProgramTracker/GetTechTracks"+ 'program');
+    return this.http.get<techtracks[]>("https://localhost:7260/api/ProgramTracker/GetTechTracks");
   }
 
 

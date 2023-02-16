@@ -37,6 +37,8 @@ import { ProgramComponent } from './program/program.component';
 import { Popup1Component } from './popup1/popup1.component';
 import { Company1Component } from './company1/company1.component';
 import { Popup2Component } from './popup2/popup2.component';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -79,7 +81,7 @@ import { Popup2Component } from './popup2/popup2.component';
     MatInputModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

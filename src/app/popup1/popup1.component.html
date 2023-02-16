@@ -6,13 +6,15 @@
       <br>
     </form>
   <div class="example-button-row" style="margin: 2px">
-    <button mat-raised-button color="primary">Approve</button> 
+    <button type="button" class="btn btn-success">Approve</button>
+   
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button mat-raised-button color="primary">Submit </button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a (click)="closepopup()" mat-raised-button color="accent">Cancel</a>
+    <button (click)="closepopup()" type="button" class="btn btn-secondary">Cancel</button>
+    <!-- //<a (click)="closepopup()" mat-raised-button color="accent">Cancel</a> -->
   </div>
   </form>
 

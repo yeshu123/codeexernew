@@ -12,7 +12,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { EditpopupComponent } from '../editpopup/editpopup.component';
 import { EditassignmentComponent } from '../editassignment/editassignment.component';
 import { Router } from '@angular/router';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -21,8 +21,10 @@ import { Router } from '@angular/router';
 export class CompanyComponent implements OnInit {
   faHome=faHome;
   faSearch=faSearch;
+  searchLeaveApplication: any;
+  //searchStartDate: any;
 
-  constructor(private dialog: MatDialog, private api: ApiService,private router: Router) { }
+  constructor(private dialog: MatDialog, private api: ApiService,private router: Router,private datePipe:DatePipe) { }
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
   @ViewChild(MatSort) _sort!:MatSort;
   companydata!: companymodel[];
@@ -32,12 +34,16 @@ export class CompanyComponent implements OnInit {
   ngOnInit(): void {
     this.LoadCompany();
   }
+  saveData() {
+    const searchStartDate = this.datePipe.transform(this.searchLeaveApplication.startDate, 'yyyy-MM-dd');
+    // handle the rest
+  }
 
-  displayColums: string[] = ["id","vamid", "resourceName", "email","manager","techTrack", "startDate", "endDate","sme","programStatus", "action"]
+  displayColums: string[] = ["vamid", "resourceName","manager","techTrack", "startDate", "endDate","sme", "action"]
 
   Openpopup(id: any) {
     const _popup = this.dialog.open(PopupComponent, {
-      width: '1500px',
+      width: '500px',
       exitAnimationDuration: '1000ms',
       enterAnimationDuration: '1000ms',
       data: {
@@ -62,7 +68,7 @@ export class CompanyComponent implements OnInit {
     this.Openpopup(id);
   }
   RemoveCompany(id: any) {
-    alertify.confirm("Remove Assignment", "do you want delete the assignment?", () => {
+    alertify.confirm("Delete Assignment", "Do you want delete the assignment?", () => {
       this.api.RemoveCompanybycode(id).subscribe(r => {
         this.LoadCompany();
       });
@@ -73,10 +79,12 @@ export class CompanyComponent implements OnInit {
 
   }
   routing(id:any) {
+    localStorage.setItem('id',id)
+   // this.api.GetCompanybycode(id);
     this.router.navigate(['/editassignment']);
-    this.api.GetCompanybycode(id);
-
-
+    this.router.navigate(['/editassignment'], { state: { example:id } });
+    //this.api.GetCompanybycode(id);
+    
   }
   
 // onSearchTextEntered(searchValue:string){

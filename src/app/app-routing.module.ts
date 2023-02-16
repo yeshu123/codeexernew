@@ -21,6 +21,9 @@ const routes: Routes = [
     component:EditassignmentComponent,path:"editassignment",pathMatch:'full'
   },
   {
+    component:EditassignmentComponent,path:"editassignment/:id",pathMatch:'full'
+  },
+  {
     component:ViewAssignmentComponent,path:"viewassignment",pathMatch:'full'
   },
   {

@@ -37,8 +37,8 @@ export class ProgramComponent implements OnInit {
     this.LoadCompany();
   }
 
-  displayColums: string[] = ["vamid", "name", "DelayDays","programName","TechTrack", "startDate", "endDate","ProgramStatus","StartDate", "EndDate","Delaydays","SMEStatus","Attach","SMEaction"]
-
+  displayColums: string[] = ["vamid", "resourceName","techTrack","program", "startDate", "endDate","DelayDays","Attach","SMEaction"]
+  displayColums1: string[]=["vamid","resourceName","program","startDate","endDate","Delaydays","smeStatus"]
   Openpopup(id: any) {
     const _popup = this.dialog.open(Popup1Component, {
       width: '500px',
