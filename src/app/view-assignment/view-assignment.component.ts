@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -27,9 +27,15 @@ export class ViewAssignmentComponent implements OnInit {
   finaldata:any;
 
 
-  ngOnInit(): void {
-    this.LoadCompany();
-  }
+  
+@Input() comments: string[] = [];
+commentData: string = '';
+
+ngOnInit() {
+  this.LoadCompany();
+  this.commentData= JSON.stringify(localStorage.getItem('commentdata'));
+  
+}
 
   displayColums: string[] = ["vamid", "resourceName","techTrack", "startDate", "endDate","sme","Delaydays", "comments"]
 

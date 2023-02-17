@@ -2,7 +2,7 @@
   <form  (ngSubmit)="SaveCompany()">
     <b>Comments: </b>
     <form action="/form/submit" method="POST">
-      <textarea class="comment" ></textarea>
+       <input type="text" class="form-control" name="comment" [(ngModel)]="comment" name="comment">
       <br>
     </form>
   <div class="example-button-row" style="margin: 2px">
@@ -10,7 +10,7 @@
    
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button mat-raised-button color="primary">Submit </button>
+    <button mat-raised-button color="primary" (click)="addcomment(comment)">Submit </button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="closepopup()" type="button" class="btn btn-secondary">Cancel</button>

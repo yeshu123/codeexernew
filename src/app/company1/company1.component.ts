@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { SubmitService } from '../submit.service';
 
+
 @Component({
   selector: 'app-company1',
   templateUrl: './company1.component.html',
@@ -19,6 +20,9 @@ export class Company1Component implements OnInit {
   faHome=faHome;
   isSubmitted: boolean= false;
   companyform: any;
+  shortLink: string = "";
+    loading: boolean = false; // Flag variable
+    file: File ;
 
   constructor(private dialog: MatDialog, private api: ApiService,public submitService: SubmitService) { }
   @ViewChild(MatPaginator) _paginator!:MatPaginator;
@@ -30,8 +34,11 @@ export class Company1Component implements OnInit {
   ngOnInit(): void {
     this.LoadCompany();
   }
+  onChange(event:any) {
+    this.file = event.target.files[0];
+  }
 
-  displayColums: string[] = ["techTrack","program", "startDate", "endDate","Delaydays","sme", "smeStatus", "upload"]
+  displayColums: string[] = ["techTrack","program", "startDate", "endDate","Delaydays","sme", "smeStatus", "upload","comments"]
   SaveCompany() {
     this.isSubmitted= true;
     if (this.companyform.valid) {
@@ -65,6 +72,34 @@ export class Company1Component implements OnInit {
       this.LoadCompany();
     });
   }
+
+  
+  // FileUpload(){
+  //   this.api.fileUpload(event?.target.FILES[0])
+  // }
+  onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.api.upload(this.file).subscribe(
+        (event: any) => {
+            if (typeof (event) === 'object') {
+
+                // Short link via api response
+                this.shortLink = event.link;
+
+                this.loading = false; // Flag variable 
+            }
+        }
+    );
+}
+
+
+
+
+
+
+
+
 
   LoadCompany() {
     this.api.Getallcomapny().subscribe(response => {

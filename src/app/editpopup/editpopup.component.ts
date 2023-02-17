@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 
 //import * as moment from 'moment';
 import { parse } from '@fortawesome/fontawesome-svg-core';
+import { techtracks } from '../Model/techtracks';
 [DatePipe];
 //[moment];
 @Component({
@@ -16,7 +17,8 @@ import { parse } from '@fortawesome/fontawesome-svg-core';
 })
 export class EditpopupComponent implements OnInit {
   editdata: any;
-  public listitems: Array<string> = ['Java', '.NET'];
+  public listitems: any;
+  track:techtracks[];
   date:any
 
   constructor(
@@ -39,10 +41,10 @@ export class EditpopupComponent implements OnInit {
         vamid: this.editdata.vamid,
         name: this.editdata.resourceName,
         email: this.editdata.email,
-        TechTrack: this.editdata.techTrack,
-        startDate:JSON.stringify(this.editdata.startDate).slice(1, 11),
-        endDate: JSON.stringify(this.editdata.endDate).slice(1, 11),
-        SMEName: this.editdata.sme,
+        techTrack: this.editdata.techTrack,
+        startDate: this.datepipe.transform(this.editdata.startDate, 'dd-MM-yyyy'),
+        endDate: this.datepipe.transform(this.editdata.endDate, 'dd-MM-yyyy'),
+        sme: this.editdata.sme,
         //ProgramStatus: this.editdata.programStatus,
       });
       this.companyform.controls.startDate.setValue(this.datepipe.transform(this.editdata.startDate, 'yyyy-MM-dd'))
@@ -57,10 +59,10 @@ export class EditpopupComponent implements OnInit {
     name: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.required),
 
-    TechTrack: this.builder.control('', Validators.required),
+    techTrack: this.builder.control('', Validators.required),
     startDate: this.builder.control('', Validators.required),
     endDate: this.builder.control('', Validators.required),
-    SMEName: this.builder.control('', Validators.required),
+    sme: this.builder.control('', Validators.required),
     //ProgramStatus: this.builder.control('', Validators.required),
   });
 
@@ -93,14 +95,25 @@ export class EditpopupComponent implements OnInit {
     var month = ('0' + (dt.getMonth() + 1)).slice(-2);
     return dt.getFullYear() + '-' + month + '-' + day;
   }
-
-  dropdown() {
-    this.api.getProgramDropDown().subscribe((data: any[]) => {
-      data.forEach((element) => {
-        this.listitems.push(element['techtrack']);
-      });
-    });
+  dropdown(){
+    this.api.getProgramDropDown().subscribe((data: any[])=>{
+      // data.forEach(element => {
+      //   this.listitems.push(element["techtrack"]);
+      //   console.log(listitems);
+        
+      // });
+      this.listitems=data;
+      console.log(this.listitems);
+    })
   }
+
+  // dropdown() {
+  //   this.api.getProgramDropDown().subscribe((data: any[]) => {
+  //     data.forEach((element) => {
+  //       this.listitems.push(element['techtrack']);
+  //     });
+  //   });
+  // }
 }
 // import { Component, Inject, OnInit } from '@angular/core';
 // import { FormBuilder, Validators } from '@angular/forms';

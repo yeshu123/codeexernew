@@ -3,7 +3,7 @@
      
   <label id="search"><b>UploadFile</b></label>
   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-select placeholder="Select the file type">
       <mat-option value="Pdf">
         Pdf
@@ -12,17 +12,21 @@
         Docx
       </mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
     <!-- <button mat-raised-button color="primary">
       browse
     </button> -->
+    <input class="form-control" type="file" 
+            (change)="this.onChange($event)">
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <button mat-raised-button color="primary"(click)="fileInput.click()">
-<span>upload</span>
-<input #fileInput type="file" (change)="handleInput($event)" formControlName="file"
-style="display:none;" /> 
+    
+      <!-- <a type="button" (click)="fileInput.click()" class="btn btn-info">upload -->
+        <a type="button" (click)="this.onUpload()" class="btn btn-info">upload
 
-</button> &nbsp;&nbsp;&nbsp; </div>
+<!-- <input #fileInput type="file" (change)="handleInput($event)" formControlName="file"
+style="display:none;" />  -->
+
+        </a> &nbsp;&nbsp;&nbsp; </div>
 <div class="example-button-row" style="margin: 2px">
   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   

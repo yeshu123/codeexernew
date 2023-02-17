@@ -1,7 +1,7 @@
 
 
-<h2>View Assignment</h2>
-<p>Resource Manager - <strong>Vasudha</strong></p>
+<h2 style="font-family: Gill sans MT-12px; font-size: 22px ; margin-top: -1.5%;">View Assignment</h2>
+
 
 <div class="mat-elevation-z8" aria-readonly="true">
     <!-- <div>
@@ -10,7 +10,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <mat-form-field>
       <mat-label><fa-icon [icon]="faSearch" size="1x" ></fa-icon>Search</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Details" #input>
     </mat-form-field>
     <table mat-table [dataSource]="finaldata" matSort class="mat-elevation-z8"  style="margin: 0% 0% 0% 0%;">
      
@@ -29,7 +29,7 @@
             <td mat-cell *matCellDef="let element">{{element.resourceName}}</td>
           </ng-container>
 
-          font-size: 15px;
+        
 
           <!-- <ng-container matColumnDef="techTrack">
             <th mat-header-cell *matHeaderCellDef> techTrack</th>
@@ -63,11 +63,11 @@
 
           
 
-          <ng-container matColumnDef="comments">
-            <th mat-header-cell *matHeaderCellDef style="color: white;font-size: 15px;"> <strong>Comments</strong></th>
+          <ng-container matColumnDef="comments" >
+            <th mat-header-cell *matHeaderCellDef style="color: white;" > <strong>Comments</strong></th>
             <td mat-cell *matCellDef="let element">
-              <div>
-                <a mat-raised-button  color="primary" [disabled]="true">Comment</a> 
+              <div> {{commentData}} 
+                <!-- <input  [disabled]="true"> {{c}} -->
                
             </div>
             </td>

@@ -9,7 +9,7 @@ export interface companymodel{
     programName:string,
     TechTrack:string,category:string,
     startDate:Date,
-    endDate:Date,
+    endDate:any,
     SMEName:string,
     ProgramStatus:string,
     SMEStatus:string,

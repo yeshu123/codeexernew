@@ -14,6 +14,10 @@ import { SubmitService } from '../submit.service';
 export class Popup2Component implements OnInit {
   editdata: any;
   public listitems : Array<string> =[];
+  shortLink: string = "";
+    loading: boolean = false; // Flag variable
+    file: File ;
+
 
   constructor(private builder: FormBuilder, private dialog: MatDialog, private api: ApiService, private submitSevice: SubmitService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -24,6 +28,9 @@ export class Popup2Component implements OnInit {
         this.editdata = response;
       });
     }
+  }
+  onChange(event:any) {
+    this.file = event.target.files[0];
   }
 
   companyform = this.builder.group({
@@ -69,17 +76,26 @@ export class Popup2Component implements OnInit {
       });
     })
   }
-  filename: string='';
-  filename1: string='';
-  handleInput(event: Event) {
-    this.filename = (event.target as HTMLInputElement).value;
-    this.filename1 = this.filename.replace(/^.*[\\\/]/, '')
-  }
+  // filename: string='';
+  // filename1: string='';
+  // handleInput(event: Event) {
+  //   this.filename = (event.target as HTMLInputElement).value;
+  //   this.filename1 = this.filename.replace(/^.*[\\\/]/, '')
+  //  }
   submit(){
     this.submitSevice.isSubmitted=true;
     //console.log('submitted');
     this.dialog.closeAll();
   }
+
+  onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.api.upload(this.file).subscribe(resp => {
+      alert("Uploaded");
+    })
+  }
+
   
 
 

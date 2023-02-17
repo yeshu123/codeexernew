@@ -13,6 +13,8 @@ import { FormGroup } from '@angular/forms';
 export class Popup1Component implements OnInit {
   editdata: any;
   public listitems : Array<string> =[];
+  comment !:{[id: number]: string}
+  parentPost: any[]=[];
 
   constructor(private builder: FormBuilder, private dialog: MatDialog, private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -67,5 +69,16 @@ export class Popup1Component implements OnInit {
       });
     })
   }
+ 
+
+
+  addcomment(comment:any){
+    console.log(comment)
+    localStorage.setItem('commentdata',comment);
+    this.closepopup();
+    this.parentPost.push(comment)
+  }
+
+
 
 }
